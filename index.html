@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Influencer - Bloques KPI, Drivers y Operacion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="container">
+      <header class="hero">
+        <p class="eyebrow">Reporte consolidado</p>
+        <h1>Tablero de performance para campañas con marcas</h1>
+        <p class="subtitle">
+          Visualiza resultados, factores explicativos y operacion diaria de Instagram, TikTok y YouTube en una sola vista.
+        </p>
+        <div class="hero-tools">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema">
+            Cambiar tema
+          </button>
+        </div>
+      </header>
+
+      <section class="filters">
+        <label>
+          Filtrar por plataforma
+          <select id="platformFilter">
+            <option value="all">Todas</option>
+          </select>
+        </label>
+        <label>
+          Filtrar por producto
+          <select id="productFilter">
+            <option value="all">Todos</option>
+          </select>
+        </label>
+        <label>
+          Listado top
+          <select id="topTypeFilter">
+            <option value="product">Top productos</option>
+            <option value="platform">Top plataformas</option>
+            <option value="campaign">Top campanas</option>
+          </select>
+        </label>
+        <label>
+          Ordenar top por
+          <select id="topMetricFilter">
+            <option value="revenue">Ingresos</option>
+            <option value="conversionRate">Conversion</option>
+            <option value="roi">ROI</option>
+            <option value="engagementRate">Engagement</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <p class="eyebrow">1. Resultado</p>
+          <h2>Indicadores principales del resultado (KPI)</h2>
+        </div>
+        <section class="kpi-grid" id="kpiGrid"></section>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <p class="eyebrow">2. Drivers</p>
+          <h2>Factores que explican el resultado</h2>
+        </div>
+
+        <section class="panel-grid">
+          <article class="panel">
+            <h3>Conversion por etapas (funnel)</h3>
+            <div id="funnelDrivers" class="bar-list"></div>
+          </article>
+
+          <article class="panel">
+            <h3>Rendimiento por plataforma</h3>
+            <div id="platformPerformance" class="bar-list"></div>
+          </article>
+
+          <article class="panel">
+            <h3>Calidad (lead qual., attendance, pass)</h3>
+            <div id="qualityDrivers" class="bar-list"></div>
+          </article>
+
+          <article class="panel">
+            <h3>Rendimiento por producto</h3>
+            <div id="productPerformance" class="bar-list"></div>
+          </article>
+
+          <article class="panel">
+            <h3>Actividad por plataforma</h3>
+            <div id="activityDrivers" class="bar-list"></div>
+          </article>
+
+          <article class="panel">
+            <h3>Engagement por plataforma</h3>
+            <div id="engagementDrivers" class="bar-list"></div>
+          </article>
+        </section>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <p class="eyebrow">3. Operacion</p>
+          <h2>Detalles operacionales, alertas y listados</h2>
+        </div>
+
+        <section class="panel-grid operation-grid">
+          <article class="panel panel-wide">
+            <h3>Tabla de productos</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Precio medio</th>
+                    <th>Comisiones</th>
+                    <th>Conversiones</th>
+                    <th>ROI</th>
+                    <th>Conversion</th>
+                  </tr>
+                </thead>
+                <tbody id="productTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel panel-wide">
+            <h3>Tabla de plataformas</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Plataforma</th>
+                    <th>Alcance</th>
+                    <th>Engagement</th>
+                    <th>Conversiones</th>
+                    <th>ROI</th>
+                    <th>Mejor metrica</th>
+                  </tr>
+                </thead>
+                <tbody id="platformTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel panel-wide">
+            <h3>Tabla de campanas</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Plataforma</th>
+                    <th>Producto</th>
+                    <th>Impresiones</th>
+                    <th>Conversiones</th>
+                    <th>Ingresos</th>
+                    <th>ROI</th>
+                    <th>Rendimiento</th>
+                  </tr>
+                </thead>
+                <tbody id="campaignBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel">
+            <h3>Alertas</h3>
+            <ul id="alertsList" class="bullet-list"></ul>
+          </article>
+
+          <article class="panel">
+            <h3>Top y oportunidades</h3>
+            <ul id="topsList" class="bullet-list"></ul>
+            <h4>Oportunidades de mejora</h4>
+            <ul id="opportunitiesList" class="bullet-list"></ul>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
